@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://5gi2kgtvghgu"]
+
+[ext_resource type="Texture2D" uid="uid://ccs50twlrx17x" path="res://haggler.png" id="1_3vyb7"]
+
+[node name="Player" type="Node2D" unique_id=1282527828]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1016029238]
+offset_right = 37.0
+offset_bottom = 197.0
+color = Color(0.64107275, 0.40274367, 0.70964086, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=667139866]
+position = Vector2(432.16666, 231.25)
+scale = Vector2(5.3020835, 5.765624)
+texture = ExtResource("1_3vyb7")
+hframes = 3

@@ -1,0 +1,420 @@
+[gd_scene format=3 uid="uid://coyholu02kxkr"]
+
+[ext_resource type="PackedScene" uid="uid://bvyb2mmg28kk7" path="res://scenes/item.tscn" id="1_qvme0"]
+[ext_resource type="Script" uid="uid://b81pb7ge517hr" path="res://scripts/managers/haggling_manager.gd" id="1_yix34"]
+[ext_resource type="Script" uid="uid://sky1oidq2tn0" path="res://scripts/states/haggle_session/player_action.gd" id="2_1af7x"]
+[ext_resource type="Script" uid="uid://bxfctg0hh32wj" path="res://scripts/states/haggle_session/haggler_action.gd" id="3_qvme0"]
+[ext_resource type="PackedScene" uid="uid://cx7wtflit0ei2" path="res://scenes/haggler.tscn" id="6_wuods"]
+[ext_resource type="Texture2D" uid="uid://ccs50twlrx17x" path="res://haggler.png" id="7_mrp4c"]
+[ext_resource type="Texture2D" uid="uid://dqaoocecqn0e3" path="res://buttons.png" id="8_g7xsn"]
+[ext_resource type="Shader" uid="uid://vjxdaoupria4" path="res://scenes/haggling.gdshader" id="8_mvs0b"]
+[ext_resource type="Texture2D" uid="uid://c7rtje5rfcepy" path="res://table.png" id="8_vmo42"]
+[ext_resource type="FontFile" uid="uid://b0it04vr4n7kq" path="res://assets/font/ARCADECLASSIC.TTF" id="9_mvs0b"]
+[ext_resource type="Script" uid="uid://bmlwpkrav3q56" path="res://addons/maaacks_game_template/extras/scripts/win_lose_manager.gd" id="11_mvs0b"]
+[ext_resource type="PackedScene" uid="uid://cns5v1sn14qht" path="res://addons/maaacks_game_template/examples/scenes/windows/level_won_window.tscn" id="12_0ukbm"]
+[ext_resource type="PackedScene" uid="uid://whpmo2tt4mwr" path="res://addons/maaacks_game_template/examples/scenes/windows/level_lost_window.tscn" id="13_u8dry"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p60i2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g7xsn"]
+bg_color = Color(0.2, 0.3137255, 0.83137256, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g7xsn"]
+shader = ExtResource("8_mvs0b")
+shader_parameter/target_color = Color(0.77254903, 0.7372549, 0.050980393, 1)
+shader_parameter/replace_color = Color(0.2, 0.3137255, 0.83137256, 1)
+shader_parameter/tolerance = 1.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g7xsn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mvs0b"]
+bg_color = Color(0.6745098, 0.19607843, 0.19607843, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mvs0b"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uaae1"]
+bg_color = Color(0.21568628, 0.5803922, 0.43137255, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tigwu"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_twnno"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="Haggling" type="Node2D" unique_id=152288324]
+
+[node name="Haggling Manager" type="Node" parent="." unique_id=105025520 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("1_yix34")
+haggler_scene = ExtResource("6_wuods")
+item_scene = ExtResource("1_qvme0")
+initial_state = NodePath("HagglerAction")
+
+[node name="HagglerAction" type="Node" parent="Haggling Manager" unique_id=375369058]
+script = ExtResource("3_qvme0")
+
+[node name="PlayerAction" type="Node" parent="Haggling Manager" unique_id=1854398470]
+script = ExtResource("2_1af7x")
+
+[node name="Haggling Options" type="CanvasLayer" parent="." unique_id=599295563]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Haggling Options" unique_id=617763253]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 70.0
+offset_top = -166.0
+offset_right = -488.0
+offset_bottom = -93.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Haggle" type="VBoxContainer" parent="Haggling Options/HBoxContainer" unique_id=1892685161]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Haggling Options/HBoxContainer/Haggle" unique_id=1482210262]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Haggling Options/HBoxContainer/Haggle/MarginContainer" unique_id=1069435054]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LineEdit" type="LineEdit" parent="Haggling Options/HBoxContainer/Haggle/MarginContainer/HBoxContainer" unique_id=1521380701]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("9_mvs0b")
+alignment = 1
+
+[node name="Button2" type="Button" parent="Haggling Options/HBoxContainer/Haggle/MarginContainer/HBoxContainer" unique_id=197430601]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("9_mvs0b")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_p60i2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_g7xsn")
+text = "Make Offer"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Haggling Options/HBoxContainer/Haggle/MarginContainer/HBoxContainer/Button2" unique_id=1513068464]
+z_index = -1
+material = SubResource("ShaderMaterial_g7xsn")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_g7xsn")
+region_rect = Rect2(106.30096, 0, 47.699043, 16.284864)
+
+[node name="Refused Deal" type="VBoxContainer" parent="Haggling Options/HBoxContainer" unique_id=224053124]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Haggling Options/HBoxContainer/Refused Deal" unique_id=869220016]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Button" type="Button" parent="Haggling Options/HBoxContainer/Refused Deal/MarginContainer" unique_id=104775233]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("9_mvs0b")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_g7xsn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_mvs0b")
+text = "Refuse Deal"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Haggling Options/HBoxContainer/Refused Deal/MarginContainer/Button" unique_id=604896056]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_g7xsn")
+region_rect = Rect2(0, 0, 48.114716, 16)
+
+[node name="Finalize Deal" type="VBoxContainer" parent="Haggling Options/HBoxContainer" unique_id=845061803]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Haggling Options/HBoxContainer/Finalize Deal" unique_id=149367650]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 10
+
+[node name="Button" type="Button" parent="Haggling Options/HBoxContainer/Finalize Deal/MarginContainer" unique_id=1220552388]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("9_mvs0b")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxEmpty_mvs0b")
+theme_override_styles/hover = SubResource("StyleBoxFlat_uaae1")
+text = "Accept Offer"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Haggling Options/HBoxContainer/Finalize Deal/MarginContainer/Button" unique_id=1991822955]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_g7xsn")
+region_rect = Rect2(52.685966, 0, 48.770782, 16)
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Haggling Options" unique_id=1952429812]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 70.0
+offset_top = -233.0
+offset_right = -855.0
+offset_bottom = -160.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Haggling Options/HBoxContainer2" unique_id=202305659]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Panel" type="Panel" parent="Haggling Options/HBoxContainer2/VBoxContainer" unique_id=1560777655]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_styles/panel = SubResource("StyleBoxFlat_tigwu")
+
+[node name="Label" type="Label" parent="Haggling Options/HBoxContainer2/VBoxContainer/Panel" unique_id=141022170]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -92.25
+offset_top = -14.0
+offset_right = 92.25
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_twnno")
+text = "Counter Offer: $99999"
+horizontal_alignment = 1
+
+[node name="Haggle Items" type="CanvasLayer" parent="." unique_id=1081566639]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Haggle Items" unique_id=106426005]
+offset_right = 433.0
+offset_bottom = 334.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Haggle Items/VBoxContainer" unique_id=1053231273]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Note title" type="HBoxContainer" parent="Haggle Items/VBoxContainer/VBoxContainer" unique_id=1939980147]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Haggle Items/VBoxContainer/VBoxContainer/Note title" unique_id=35655430]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("9_mvs0b")
+theme_override_font_sizes/font_size = 20
+text = "Haggle Items"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Haggle Items/VBoxContainer/VBoxContainer" unique_id=2006765907]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="List" type="VBoxContainer" parent="Haggle Items/VBoxContainer/VBoxContainer/ScrollContainer" unique_id=626234541]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Haggle Stats" type="CanvasLayer" parent="." unique_id=198540857]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Haggle Stats" unique_id=619929248]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -255.0
+offset_bottom = 145.0
+grow_horizontal = 0
+alignment = 1
+
+[node name="Panel" type="Panel" parent="Haggle Stats/VBoxContainer" unique_id=395820160]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Haggle Stats/VBoxContainer/Panel" unique_id=823665164]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Haggle Stats/VBoxContainer/Panel/VBoxContainer2" unique_id=800045440]
+layout_mode = 2
+alignment = 1
+
+[node name="Budget" type="Label" parent="Haggle Stats/VBoxContainer/Panel/VBoxContainer2/VBoxContainer" unique_id=1482426227]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("9_mvs0b")
+theme_override_font_sizes/font_size = 20
+text = "Haggler Budget: $999999"
+horizontal_alignment = 1
+
+[node name="Total" type="Label" parent="Haggle Stats/VBoxContainer/Panel/VBoxContainer2/VBoxContainer" unique_id=924548305]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("9_mvs0b")
+theme_override_font_sizes/font_size = 20
+text = "Current Total: $999999"
+horizontal_alignment = 1
+
+[node name="Time" type="CanvasLayer" parent="." unique_id=302726625]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Time" unique_id=1098250677]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -80.0
+offset_right = 80.0
+offset_bottom = 72.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="Panel" type="Panel" parent="Time/VBoxContainer" unique_id=563351589]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Time/VBoxContainer/Panel" unique_id=585276077]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Time/VBoxContainer/Panel/VBoxContainer2" unique_id=1646534675]
+layout_mode = 2
+alignment = 1
+
+[node name="Time" type="Label" parent="Time/VBoxContainer/Panel/VBoxContainer2/VBoxContainer" unique_id=465916605]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("9_mvs0b")
+theme_override_font_sizes/font_size = 20
+text = "Time: 120"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1607451601]
+z_index = -999
+offset_right = 1271.0
+offset_bottom = 887.0
+color = Color(0.1764706, 0.043137256, 0.14901961, 0.5686275)
+
+[node name="Table" type="Node2D" parent="." unique_id=551755622]
+position = Vector2(0, -1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Table" unique_id=1980238812]
+position = Vector2(575, 468)
+scale = Vector2(8.9609375, 7.3142867)
+texture = ExtResource("8_vmo42")
+
+[node name="Seller" type="Node2D" parent="." unique_id=1640295803]
+
+[node name="Sprite2D2" type="Sprite2D" parent="Seller" unique_id=51002288]
+position = Vector2(917.5, 549)
+scale = Vector2(6, 6)
+texture = ExtResource("7_mrp4c")
+hframes = 3
+frame = 1
+
+[node name="WinLoseManager" type="Node" parent="." unique_id=511793333]
+script = ExtResource("11_mvs0b")
+main_menu_scene_path = "uid://byvydukidk6i2"
+ending_scene_path = "uid://bagraegk311h0"
+game_won_scene = ExtResource("12_0ukbm")
+game_lost_scene = ExtResource("13_u8dry")
+
+[connection signal="haggle_offer" from="Haggling Manager/HagglerAction" to="Haggling Manager" method="update_offer"]
+[connection signal="player_haggle_offer" from="Haggling Manager/PlayerAction" to="Haggling Manager" method="_on_player_action_player_haggle_offer"]
+[connection signal="player_haggle_offer" from="Haggling Manager/PlayerAction" to="Haggling Manager" method="update_offer"]
+[connection signal="pressed" from="Haggling Options/HBoxContainer/Haggle/MarginContainer/HBoxContainer/Button2" to="Haggling Manager/PlayerAction" method="make_offer"]
+[connection signal="pressed" from="Haggling Options/HBoxContainer/Refused Deal/MarginContainer/Button" to="Haggling Manager/PlayerAction" method="refuse_offer"]
+[connection signal="pressed" from="Haggling Options/HBoxContainer/Finalize Deal/MarginContainer/Button" to="Haggling Manager/PlayerAction" method="accept_offer"]

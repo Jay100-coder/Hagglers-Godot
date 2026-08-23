@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://bfksrdeljdwwq"]
+
+[ext_resource type="Script" uid="uid://dkhr3on2s7f2j" path="res://scripts/entrance.gd" id="1_j8c1m"]
+[ext_resource type="PackedScene" uid="uid://mb8f2jo5am3g" path="res://scenes/daily_progress.tscn" id="2_ba6v0"]
+[ext_resource type="PackedScene" uid="uid://cx7wtflit0ei2" path="res://scenes/haggler.tscn" id="3_aidi3"]
+[ext_resource type="FontFile" uid="uid://b0it04vr4n7kq" path="res://assets/font/ARCADECLASSIC.TTF" id="4_gm1gp"]
+[ext_resource type="Script" uid="uid://bmlwpkrav3q56" path="res://addons/maaacks_game_template/extras/scripts/win_lose_manager.gd" id="5_5dtqe"]
+[ext_resource type="Texture2D" uid="uid://ccs50twlrx17x" path="res://haggler.png" id="5_iyrkg"]
+[ext_resource type="PackedScene" uid="uid://cns5v1sn14qht" path="res://addons/maaacks_game_template/examples/scenes/windows/level_won_window.tscn" id="7_2y26w"]
+[ext_resource type="PackedScene" uid="uid://whpmo2tt4mwr" path="res://addons/maaacks_game_template/examples/scenes/windows/level_lost_window.tscn" id="8_xq8y2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mvs0b"]
+font = ExtResource("4_gm1gp")
+font_size = 18
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5dtqe"]
+font = ExtResource("4_gm1gp")
+font_size = 18
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_xq8y2"]
+font = ExtResource("4_gm1gp")
+font_size = 18
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aidi3"]
+size = Vector2(37, 85)
+
+[node name="Entrance" type="Node2D" unique_id=938072986]
+script = ExtResource("1_j8c1m")
+haggler_scene = ExtResource("3_aidi3")
+
+[node name="Daily Progress" parent="." unique_id=1184120485 instance=ExtResource("2_ba6v0")]
+
+[node name="Table" type="Node2D" parent="." unique_id=2077465968]
+
+[node name="ColorRect" type="ColorRect" parent="Table" unique_id=752942622]
+offset_left = 106.0
+offset_top = 564.0
+offset_right = 352.0
+offset_bottom = 646.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Table" unique_id=1992189550]
+offset_left = 105.0
+offset_top = 565.0
+offset_right = 351.0
+offset_bottom = 646.0
+
+[node name="Sale" type="Label" parent="Table/VBoxContainer" unique_id=1306673733]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 18
+text = "SALE!!! SALE!!! SALE!!!"
+label_settings = SubResource("LabelSettings_mvs0b")
+horizontal_alignment = 1
+
+[node name="Items Must Go" type="Label" parent="Table/VBoxContainer" unique_id=219353447]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "ALL ITEMS MUST GO!!!"
+label_settings = SubResource("LabelSettings_5dtqe")
+horizontal_alignment = 1
+
+[node name="Haggler Welcome" type="Label" parent="Table/VBoxContainer" unique_id=86383562]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(0.015686275, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "(ALL SALES ARE FINAL!!)"
+label_settings = SubResource("LabelSettings_xq8y2")
+horizontal_alignment = 1
+
+[node name="Start Haggle Session" type="Area2D" parent="." unique_id=755712996]
+position = Vector2(395, 602)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Start Haggle Session" unique_id=806176292]
+shape = SubResource("RectangleShape2D_aidi3")
+
+[node name="Seller" type="Node2D" parent="." unique_id=1123565361]
+
+[node name="Sprite2D" type="Sprite2D" parent="Seller" unique_id=2134760458]
+position = Vector2(58, 569)
+scale = Vector2(5, 5)
+texture = ExtResource("5_iyrkg")
+hframes = 3
+frame = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1023079394]
+z_index = -1
+offset_right = 1249.0
+offset_bottom = 900.0
+color = Color(0.1764706, 0.043137256, 0.14901961, 0.5686275)
+
+[node name="WinLoseManager" type="Node" parent="." unique_id=2112361143]
+script = ExtResource("5_5dtqe")
+main_menu_scene_path = "uid://byvydukidk6i2"
+ending_scene_path = "uid://bagraegk311h0"
+game_won_scene = ExtResource("7_2y26w")
+game_lost_scene = ExtResource("8_xq8y2")
+
+[connection signal="update_daily_goal" from="." to="Daily Progress" method="_on_entrance_update_daily_goal"]
+[connection signal="update_day" from="." to="Daily Progress" method="_on_entrance_update_day"]
+[connection signal="update_time" from="." to="Daily Progress" method="_on_entrance_update_time"]
+[connection signal="area_entered" from="Start Haggle Session" to="." method="_on_start_haggle_session_area_entered"]

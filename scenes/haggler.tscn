@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://cx7wtflit0ei2"]
+
+[ext_resource type="Script" uid="uid://dvvqf1fp5hll" path="res://scripts/haggler.gd" id="1_yrpym"]
+[ext_resource type="Texture2D" uid="uid://ccs50twlrx17x" path="res://haggler.png" id="2_07vb4"]
+[ext_resource type="FontFile" uid="uid://b0it04vr4n7kq" path="res://assets/font/ARCADECLASSIC.TTF" id="4_d06rk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_63cfr"]
+bg_color = Color(0.6, 0.6, 0.6, 0.90588236)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_twnno"]
+bg_color = Color(0.19215687, 0.23921569, 0.3529412, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="Haggler" type="Area2D" unique_id=1766756589]
+script = ExtResource("1_yrpym")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=212185534]
+scale = Vector2(4, 4)
+texture = ExtResource("2_07vb4")
+hframes = 3
+
+[node name="Mood" type="ProgressBar" parent="." unique_id=970307692]
+offset_left = -47.0
+offset_top = -102.0
+offset_right = 79.66667
+offset_bottom = -70.0
+scale = Vector2(0.75, 0.75)
+theme_override_colors/font_color = Color(0.08468992, 0.08468992, 0.08468992, 1)
+theme_override_fonts/font = ExtResource("4_d06rk")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/background = SubResource("StyleBoxFlat_63cfr")
+
+[node name="Haggler Stats" type="VBoxContainer" parent="." unique_id=1088281921]
+offset_left = -72.0
+offset_top = -139.0
+offset_right = 75.0
+offset_bottom = -100.0
+theme_override_constants/separation = -5
+
+[node name="Items" type="Label" parent="Haggler Stats" unique_id=1058557373]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("4_d06rk")
+theme_override_font_sizes/font_size = 16
+text = "99999999 Items"
+horizontal_alignment = 1
+
+[node name="Budget" type="Label" parent="Haggler Stats" unique_id=373582965]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("4_d06rk")
+theme_override_font_sizes/font_size = 16
+text = "Budget: $99999999"
+horizontal_alignment = 1
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1464816038]
+polygon = PackedVector2Array(-2, -57, 29, -40, 29, -12, 8, 5, 15, 37, 3, 61, -10, 43, -14, 14, -11, 2, -31, -12, -29, -46)
+
+[node name="Response" type="Panel" parent="." unique_id=658751681]
+visible = false
+offset_left = -111.0
+offset_top = -133.0
+offset_right = 119.0
+offset_bottom = -107.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_twnno")
+
+[node name="RichTextLabel" type="Label" parent="Response" unique_id=857998282]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Can  you  do $5000000?"
+horizontal_alignment = 1
+vertical_alignment = 1

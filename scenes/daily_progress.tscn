@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://mb8f2jo5am3g"]
+
+[ext_resource type="Script" uid="uid://dt0o4a683nrbj" path="res://scripts/daily_progress.gd" id="1_e167q"]
+[ext_resource type="FontFile" uid="uid://b0it04vr4n7kq" path="res://assets/font/ARCADECLASSIC.TTF" id="2_w6pni"]
+
+[node name="Daily Progress" type="CanvasLayer" unique_id=1184120485]
+script = ExtResource("1_e167q")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1831516429]
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=1778313237]
+layout_mode = 2
+alignment = 1
+
+[node name="Day" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=510073153]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_w6pni")
+theme_override_font_sizes/font_size = 20
+text = "Day 1"
+horizontal_alignment = 1
+
+[node name="Time" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=766896175]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_w6pni")
+theme_override_font_sizes/font_size = 20
+text = "Time: 120"
+horizontal_alignment = 1
+
+[node name="Goal" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=1389864373]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_w6pni")
+theme_override_font_sizes/font_size = 20
+text = "Goal: $0 / $500"
+horizontal_alignment = 1
